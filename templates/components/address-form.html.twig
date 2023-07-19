@@ -1,0 +1,11 @@
+<div {{ attributes }}>
+    {{ form_start(form, {
+        attr: {
+            'data-action': 'live#action',
+            'data-action-name': 'prevent|save'
+        }
+    }) }}
+        {{ form_row(form.name) }}
+        {{ form_row(form.city) }}
+    {{ form_end(form) }}
+</div>

@@ -1,0 +1,8 @@
+<div {{ attributes }}>
+    <ul>
+{#  this.addresses est défini par le nom du getter getAddresses #}
+    {% for address in this.addresses %}
+        <li>{{ address.name }}</li>
+    {% endfor %}
+    </ul>
+</div>
