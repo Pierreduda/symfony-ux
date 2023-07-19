@@ -36,10 +36,6 @@ init:
 	make migrate
 	make add-user
 
-# user  test@test.fr avec pour mdp admin
-add-user:
-	$(DOCKER) $(DB) mysql -uroot -proot $(DB_NAME) -e "INSERT INTO user( roles ,email, password,is_verified, enabled) VALUES ('[\"ROLE_ADMIN\"]','test@test.fr','\$$argon2id\$$v=19\$$m=65536,t=4,p=1\$$ZmFXMHRlQWNvMGJjZTRVVQ\$$Xe6fO15+cU4zaqrzQdnndA', 1, 1)";
-
 # COMMANDS
 
 cities:
