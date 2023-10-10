@@ -38,8 +38,7 @@ class RegenerateAppSecretCommand extends Command
             $io->note(sprintf('Editing file: %s', $filepath));
 
             $fileContent = file_get_contents($filepath);
-            $regex = "(APP_SECRET=+[0-9a-z]{32})";
-//            $regex = "(^APP_SECRET=+[0-9a-z]{32})";
+            $regex = '/^(APP_SECRET=+[0-9a-z]{32})/m';
             $appNewSecret = "APP_SECRET=$secret";
             $result = preg_replace($regex, $appNewSecret, $fileContent);
             file_put_contents($filepath, $result);

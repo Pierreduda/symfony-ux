@@ -1,0 +1,5 @@
+@use './utils/index' as c;
+
+body {
+    background-color: c.$lightgray;
+}
