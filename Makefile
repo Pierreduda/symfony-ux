@@ -13,8 +13,12 @@ update:
 	$(DOCKER) $(BACKEND) composer update
 %:
 	$(DOCKER) $(BACKEND) php bin/console make:$@
+migration:
+	$(DOCKER) $(BACKEND) php bin/console make:migration
 migrate:
 	$(DOCKER) $(BACKEND) php bin/console doctrine:migrations:migrate
+migrate-test:
+	$(DOCKER) $(BACKEND) php bin/console doctrine:migrations:migrate -n --env=test
 generate:
 	$(DOCKER) $(BACKEND) php bin/console doctrine:migrations:generate
 watch:
@@ -28,6 +32,8 @@ cc:
 	$(DOCKER) $(BACKEND) php bin/console c:c
 ddb:
 	$(DOCKER) $(BACKEND) php bin/console doctrine:database:create
+ddb-test:
+	$(DOCKER) $(BACKEND) php bin/console doctrine:database:create --env=test
 init:
 	docker compose up -d
 	make update
@@ -44,6 +50,7 @@ cities:
 .PHONY:
 	cities
 
+# exemple: make node E="yarn encore dev --watch"
 node:
 	$(DOCKER) $(FRONT) $(E)
 
