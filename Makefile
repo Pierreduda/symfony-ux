@@ -29,12 +29,12 @@ cc:
 ddb:
 	$(DOCKER) $(BACKEND) php bin/console doctrine:database:create
 init:
-	docker compose run --rm --no-deps $(FRONT) bash -ci 'yarn install'
 	docker compose up -d
 	make update
+	docker compose run --rm --no-deps $(FRONT) bash -ci 'yarn install'
 	make ddb
 	make migrate
-	make add-user
+#	make add-user
 
 # COMMANDS
 
